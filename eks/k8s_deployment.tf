@@ -1,9 +1,9 @@
 resource "kubernetes_deployment" "app_deployment" {
   metadata {
-    name      = var.eks_name
+    name      = var.eks_service_name
     namespace = var.env
     labels = {
-      app = var.eks_name
+      app = var.eks_service_name
     }
   }
 
@@ -12,20 +12,20 @@ resource "kubernetes_deployment" "app_deployment" {
 
     selector {
       match_labels = {
-        app = var.eks_name
+        app = var.eks_service_name
       }
     }
 
     template {
       metadata {
         labels = {
-          app = var.eks_name
+          app = var.eks_service_name
         }
       }
 
       spec {
         container {
-          name  = var.eks_name
+          name  = var.eks_service_name
           image = "${var.ecr_url}:${var.image_tag}"
 
           port {

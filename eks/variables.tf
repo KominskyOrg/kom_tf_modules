@@ -21,12 +21,7 @@ variable "ecr_url" {
   type        = string
 }
 
-variable "service_name" {
-  description = "Service name. (i.e. auth_app)"
-  type        = string
-}
-
-variable "eks_name" {
+variable "eks_service_name" {
   description = "EKS name. (i.e. auth-app)"
   type        = string
 }

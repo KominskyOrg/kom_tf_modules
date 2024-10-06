@@ -1,12 +1,12 @@
 resource "kubernetes_service" "app_service" {
   metadata {
-    name      = var.service_name
+    name      = var.eks_service_name
     namespace = var.env
   }
 
   spec {
     selector = {
-      app = var.service_name
+      app = var.eks_service_name
     }
 
     port {
