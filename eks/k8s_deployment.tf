@@ -76,6 +76,6 @@ resource "kubernetes_deployment" "app_deployment" {
 }
 
 output "pod_names" {
-  description = "Names of the ${var.eks_name} pods"
+  description = "Names of the deployed pods"
   value       = kubernetes_deployment.app_deployment.spec[0].template[0].metadata[0].labels["app"]
 }
