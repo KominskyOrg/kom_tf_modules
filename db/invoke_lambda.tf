@@ -14,5 +14,6 @@ resource "null_resource" "invoke_manage_db_resources" {
 
   triggers = {
     stack_name = var.stack_name
+    env        = var.env
   }
 }
