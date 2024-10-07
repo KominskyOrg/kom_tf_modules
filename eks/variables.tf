@@ -57,3 +57,9 @@ variable "liveness_probe_path" {
   description = "Path for liveness probe"
   type        = string
 }
+
+variable "env_from_secrets" {
+  description = "List of secret names to include in env_from"
+  type        = list(string)
+  default     = []
+}

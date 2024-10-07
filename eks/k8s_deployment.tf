@@ -40,6 +40,15 @@ resource "kubernetes_deployment" "app_deployment" {
             }
           }
 
+          dynamic "env_from" {
+            for_each = var.env_from_secrets
+            content {
+              secret_ref {
+                name = each.value
+              }
+            }
+          }
+
           readiness_probe {
             http_get {
               path = var.readiness_probe_path
