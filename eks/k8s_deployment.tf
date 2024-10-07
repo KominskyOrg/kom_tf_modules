@@ -29,23 +29,21 @@ resource "kubernetes_deployment" "app_deployment" {
           image = "${var.ecr_url}:${var.image_tag}"
 
           port {
-            container_port = 3000
+            container_port = var.service_target_port
           }
 
-          env {
-            name = "AUTH_API_URL"
-            value = "https://${var.env}.jaredkominsky.com/api/auth"
-          }
-
-          env {
-            name  = "NODE_ENV"
-            value = var.env == "staging" ? "development" : var.env == "prod" ? "production" : var.env
+          dynamic "env" {
+            for_each = var.env_vars
+            content {
+              name  = env.key
+              value = env.value
+            }
           }
 
           readiness_probe {
             http_get {
               path = "/health"
-              port = 3000
+              port = var.service_target_port
             }
             initial_delay_seconds = 10
             period_seconds        = 10
@@ -57,7 +55,7 @@ resource "kubernetes_deployment" "app_deployment" {
           liveness_probe {
             http_get {
               path = "/health"
-              port = 3000
+              port = var.service_target_port
             }
             initial_delay_seconds = 30
             period_seconds        = 30

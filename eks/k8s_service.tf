@@ -11,8 +11,8 @@ resource "kubernetes_service" "app_service" {
 
     port {
       name        = "http"
-      port        = 8080
-      target_port = 3000
+      port        = var.service_port
+      target_port = var.service_target_port
     }
 
     type = "ClusterIP"

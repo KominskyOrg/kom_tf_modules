@@ -30,3 +30,20 @@ variable "node_selector" {
   description = "Node selector for the deployment"
   type        = map(string)
 }
+
+variable "service_port" {
+  description = "Service port"
+  type        = number
+  default     = 8080
+}
+
+variable "service_target_port" {
+  description = "Service target port"
+  type        = number
+}
+
+variable "env_vars" {
+  description = "Map of environment variables for the application"
+  type        = map(string)
+  default     = {}
+}
