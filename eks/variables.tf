@@ -29,5 +29,4 @@ variable "eks_service_name" {
 variable "node_selector" {
   description = "Node selector for the deployment"
   type        = map(string)
-  default     = {}
 }
