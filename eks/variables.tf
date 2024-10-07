@@ -47,3 +47,13 @@ variable "env_vars" {
   type        = map(string)
   default     = {}
 }
+
+variable "readiness_probe_path" {
+  description = "Path for readiness probe"
+  type        = string
+}
+
+variable "liveness_probe_path" {
+  description = "Path for liveness probe"
+  type        = string
+}
