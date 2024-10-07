@@ -25,3 +25,9 @@ variable "eks_service_name" {
   description = "EKS name. (i.e. auth-app)"
   type        = string
 }
+
+variable "node_selector" {
+  description = "Node selector for the deployment"
+  type        = map(string)
+  default     = {}
+}

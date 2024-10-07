@@ -67,9 +67,7 @@ resource "kubernetes_deployment" "app_deployment" {
           }
         }
 
-        node_selector = {
-          role = "frontend"
-        }
+        node_selector = var.node_selector
       }
     }
   }
