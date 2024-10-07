@@ -44,7 +44,7 @@ resource "kubernetes_deployment" "app_deployment" {
             for_each = var.env_from_secrets
             content {
               secret_ref {
-                name = each.value
+                name = env_from.value
               }
             }
           }
